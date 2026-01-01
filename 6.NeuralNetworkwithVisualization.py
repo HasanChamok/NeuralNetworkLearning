@@ -52,6 +52,7 @@ class Layer:
         for idx, (weights, bias) in enumerate(neurons_config):
             print(f"Creating Neuron {idx + 1} with weights={weights}, bias={bias}")
             self.neurons.append(Neuron(weights, bias))
+            print(self.neurons)
 
     def forward(self, inputs):
         """
@@ -115,18 +116,28 @@ if __name__ == "__main__":
     # ---------------- MANUAL NETWORK CONFIG ----------------
     network_config = [
 
-        # Hidden Layer (2 neurons, 3 inputs)
+        # Hidden Layer 1 (5 neurons, 3 inputs)
         [
-            ([0.2, -0.5, 1.0], 0.1),
-            ([0.7,  0.3, -0.2], -0.1),
-            ([0.7,  0.3, -0.2], -0.1),
-            ([0.7,  0.3, -0.2], -0.1),
-            ([0.7,  0.3, -0.2], -0.1),
-        ],
+        ([0.2, -0.5, 1.0], 0.1),
+        ([0.7,  0.3, -0.2], -0.1),
+        ([0.6, -0.1, 0.4], 0.0),
+        ([0.9,  0.2, -0.3], 0.2),
+        ([0.1,  0.8, -0.6], -0.2),
+    ],
 
-        # Output Layer (1 neuron, 2 inputs)
+    # ---------------- Hidden Layer 2 ----------------
+    # 5 neurons, each takes 5 inputs (from previous layer)
+    [
+        ([0.3, -0.4, 0.6, 0.1, -0.2], 0.05),
+        ([0.5,  0.2, -0.1, 0.7, -0.3], -0.1),
+        ([0.8, -0.6, 0.2, 0.4,  0.1], 0.0),
+        ([0.1,  0.9, -0.5, 0.3, -0.4], 0.2),
+        ([0.4, -0.2, 0.8, -0.1,  0.6], -0.05),
+    ],
+
+        # Output Layer (1 neuron, 5 inputs)
         [
-            ([1.0, -1.5], 0.2),
+            ([1.0, -1.5, 0.7, 0.3, 0.5], 0.2),
         ]
     ]
 
