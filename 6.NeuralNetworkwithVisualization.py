@@ -52,7 +52,6 @@ class Layer:
         for idx, (weights, bias) in enumerate(neurons_config):
             print(f"Creating Neuron {idx + 1} with weights={weights}, bias={bias}")
             self.neurons.append(Neuron(weights, bias))
-            print(self.neurons)
 
     def forward(self, inputs):
         """
